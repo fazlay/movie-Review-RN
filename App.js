@@ -2,12 +2,13 @@ import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { StatusBar, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Discovermovie from './src/Page/DiscoverMovie';
 import Watchedlist from './src/Page/WatchedList';
 import Favourite from './src/Page/Favourite';
+import { useEffect, useState } from 'react';
 
 const Tab = createBottomTabNavigator();
 export default function App() {

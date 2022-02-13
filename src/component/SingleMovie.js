@@ -1,24 +1,19 @@
 import * as React from 'react';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
-const LeftContent = (props) => <Avatar.Icon {...props} icon='folder' />;
-
-const Singlemovie = () => {
+const Singlemovie = (movieData) => {
+  console.log(movieData.item?.Poster);
+  //imdbRating
   return (
     <Card>
-      <Card.Title
-        title='Card Title'
-        subtitle='Card Subtitle'
-        left={LeftContent}
-      />
       <Card.Content>
-        <Title>Card title</Title>
-        <Paragraph>Card content</Paragraph>
+        <Title>{movieData.item?.Title}</Title>
+        <Paragraph>IMDB Rating: {movieData.item?.imdbRating}</Paragraph>
       </Card.Content>
-      <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+      <Card.Cover source={{ uri: movieData.item?.Images[0] }} />
       <Card.Actions>
-        <Button>Cancel</Button>
-        <Button>Ok</Button>
+        <Button>Add TO Watchlist</Button>
+        <Button>Add to Favourite</Button>
       </Card.Actions>
     </Card>
   );
