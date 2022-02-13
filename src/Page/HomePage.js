@@ -1,30 +1,28 @@
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import { StatusBar, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-
+import React from 'react';
+import { SafeAreaView, StatusBar, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Discovermovie from './src/Page/DiscoverMovie';
-import Watchedlist from './src/Page/WatchedList';
-import Favourite from './src/Page/Favourite';
+import Discovermovie from './DiscoverMovie';
+import Watchedlist from './WatchedList';
 
 const Tab = createBottomTabNavigator();
+
 export default function App() {
   return (
-    <>
+    <SafeAreaView style={{ marginTop: StatusBar.currentHeight }}>
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-              if (route.name === 'Discover') {
-                iconName = focused ? 'apps-sharp' : 'apps-outline';
-              } else if (route.name === 'Watched') {
-                iconName = focused ? 'ios-list-circle' : 'ios-list';
-              } else if (route.name === 'Favourite') {
-                iconName = focused ? 'bookmark-outline' : 'bookmark';
+              if (route.name === 'Home') {
+                iconName = focused
+                  ? 'ios-information-circle'
+                  : 'ios-information-circle-outline';
+              } else if (route.name === 'Settings') {
+                iconName = focused ? 'ios-list-box' : 'ios-list';
               }
 
               // You can return any component that you like here!
@@ -36,11 +34,8 @@ export default function App() {
         >
           <Tab.Screen name='Discover' component={Discovermovie} />
           <Tab.Screen name='Watched' component={Watchedlist} />
-          <Tab.Screen name='Favourite' component={Favourite} />
         </Tab.Navigator>
       </NavigationContainer>
-
-      <ExpoStatusBar style='auto' />
-    </>
+    </SafeAreaView>
   );
 }
