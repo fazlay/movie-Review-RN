@@ -3,23 +3,32 @@ import { useState } from "react";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import { useDispatch } from "react-redux";
 
-import { addToWatchedList } from "../../redux/slices/movieSlice";
+import {
+  addToFavouriteList,
+  addToWatchedList,
+} from "../../redux/slices/movieSlice";
 
-const Singlemovie = (movieData) => {
-  // const [state, setState] = useState();
-  // const dispatch = useDispatch();
-  //onClick={() => dispatch(addToWatchedList(movieData))}
+const Singlemovie = ({ movieData = {}, screen }) => {
+  console.log(screen);
+  const dispatch = useDispatch();
+
   return (
     <Card>
       <Card.Content>
-        <Title>{movieData.item?.Title}</Title>
-        <Paragraph>IMDB Rating: {movieData.item?.imdbRating}</Paragraph>
+        <Title>{movieData?.Title}</Title>
+        <Paragraph>IMDB Rating: {movieData?.imdbRating}</Paragraph>
       </Card.Content>
-      <Card.Cover source={{ uri: movieData.item?.Images[0] }} />
-      <Card.Actions>
-        <Button>Add TO Watchlist</Button>
-        <Button>Add to Favourite</Button>
-      </Card.Actions>
+      <Card.Cover source={{ uri: movieData?.Images[0] }} />
+      {screen == "Discover" ? (
+        <Card.Actions>
+          <Button onPress={() => dispatch(addToWatchedList(movieData))}>
+            Add TO Watchlist
+          </Button>
+          <Button onPress={() => dispatch(addToFavouriteList(movieData))}>
+            Add to Favourite
+          </Button>
+        </Card.Actions>
+      ) : null}
     </Card>
   );
 };

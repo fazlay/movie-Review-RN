@@ -8,9 +8,12 @@ const Discovermovie = () => {
 
   return (
     <View>
+      {/* <Singlemovie movie={movies[1]}></Singlemovie> */}
       <FlatList
         data={movies}
-        renderItem={Singlemovie}
+        renderItem={({ item }) => {
+          return <Singlemovie movieData={item} screen={"Discover"} />;
+        }}
         keyExtractor={(item) => item.imdbID}
       />
     </View>
