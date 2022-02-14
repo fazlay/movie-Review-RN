@@ -8,6 +8,9 @@ const Watchedlist = () => {
   console.log("This is watched List", watchList);
   return (
     <View>
+      {!watchList && (
+        <Text>List is Empty . First Add some movie to the list</Text>
+      )}
       <FlatList
         data={watchList}
         renderItem={({ item }) => {
