@@ -1,12 +1,14 @@
-import React from "react";
-import { useState } from "react";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { useState } from 'react';
+import { Image, Text, View } from 'react-native';
+import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+
+import { useDispatch } from 'react-redux';
 
 import {
   addToFavouriteList,
   addToWatchedList,
-} from "../../redux/slices/movieSlice";
+} from '../../redux/slices/movieSlice';
 
 const Singlemovie = ({ movieData = {}, screen }) => {
   console.log(screen);
@@ -14,12 +16,22 @@ const Singlemovie = ({ movieData = {}, screen }) => {
 
   return (
     <Card>
-      <Card.Content>
-        <Title>{movieData?.Title}</Title>
-        <Paragraph>IMDB Rating: {movieData?.imdbRating}</Paragraph>
-      </Card.Content>
-      <Card.Cover source={{ uri: movieData?.Images[0] }} />
-      {screen == "Discover" ? (
+      <View style={{ flex: 1, flexDirection: 'row', padding: 10 }}>
+        <Image
+          source={{ uri: movieData?.Poster }}
+          resizeMode='cover'
+          style={{ width: 100, height: 150, borderRadius: 10 }}
+        />
+        <View style={{ marginLeft: 15, marginTop: 5 }}>
+          <Text style={{ fontSize: 25, fontWeight: 'bold' }}>
+            This is Title
+          </Text>
+          <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
+            This is Movie Smmary
+          </Text>
+        </View>
+      </View>
+      {screen == 'Discover' ? (
         <Card.Actions>
           <Button onPress={() => dispatch(addToWatchedList(movieData))}>
             Add TO Watchlist
