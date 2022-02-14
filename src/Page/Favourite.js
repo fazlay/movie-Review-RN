@@ -8,6 +8,13 @@ const Favourite = () => {
 
   return (
     <View>
+      {favouriteList.length == 0 && (
+        <Text
+          style={{ textAlign: "center", fontWeight: "bold", marginTop: "50%" }}
+        >
+          List is Empty . First Add some movie to the list
+        </Text>
+      )}
       <FlatList
         data={favouriteList}
         renderItem={({ item }) => {
