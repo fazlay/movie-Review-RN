@@ -1,9 +1,14 @@
-import * as React from 'react';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import React from "react";
+import { useState } from "react";
+import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { useDispatch } from "react-redux";
+
+import { addToWatchedList } from "../../redux/slices/movieSlice";
 
 const Singlemovie = (movieData) => {
-  console.log(movieData.item?.Poster);
-  //imdbRating
+  // const [state, setState] = useState();
+  // const dispatch = useDispatch();
+  //onClick={() => dispatch(addToWatchedList(movieData))}
   return (
     <Card>
       <Card.Content>
