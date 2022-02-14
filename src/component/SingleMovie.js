@@ -24,10 +24,12 @@ const Singlemovie = ({ movieData = {}, screen }) => {
         />
         <View style={{ marginLeft: 15, marginTop: 5 }}>
           <Text style={{ fontSize: 25, fontWeight: 'bold' }}>
-            This is Title
+            {movieData?.Title}
           </Text>
-          <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
-            This is Movie Smmary
+          <Text
+            style={{ width: 230, flex: 1, fontSize: 15, fontWeight: 'bold' }}
+          >
+            {movieData?.Plot}
           </Text>
         </View>
       </View>
